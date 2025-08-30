@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formonix</title>
+</head>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+
+}
+
+body
+{
+    height: 100vh;
+    width: 100%;
+    flex-direction: column;
+
+}
+
+.heading
+{
+    width: 100%;
+    height: 70px;
+    /* background-color: aqua; */
+    display: flex;
+    align-items: center;
+}
+
+#logo
+{
+    display: flex;
+    position: absolute;
+    left: 30px;
+    top: 20px;
+
+    align-items: center;
+}
+
+
+.heading ul
+{
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    /* align-items: center; */
+
+    gap: 20px;
+    position: absolute;
+    font-size: 20px;
+    right: 300px;
+    left: 300px;
+
+}
+
+.heading button
+
+{
+    position: absolute;
+    right: 0px;
+    height: 70px;
+    width: 170px;
+    font-size: 20px;
+    background-color: rgb(6, 71, 71);
+    border-top-right-radius: 30px;
+
+}
+.main-section
+
+{
+    height: 100vh;
+    width: 100%;
+    background-color:rgb(254, 253, 224);
+    flex-direction: column;
+    position: relative;
+
+}
+.content-section
+{
+    height: 50%;
+    width: 100%;
+    display: flex;
+}
+
+
+.left-content
+{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    position: relative;
+    left: 20px;
+    font-size: 35px;
+    color: rgb(6, 71, 71);
+   
+
+
+}
+.right-content
+{
+    margin-top: 20px;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    padding-right: 20px;
+
+}
+
+.right-content p
+{
+    font-size: 25px;
+    margin-right: 30px;
+    color: rgb(6, 71, 71);
+    padding: 10px;
+    text-align: left;
+
+}
+.main-button 
+{
+    margin-top: 10px;
+    padding: 20px;
+}
+
+.main-button button
+{
+    padding: 15px;
+    border: 1px solid teal;
+    background-color: rgb(6, 71, 71);
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    margin: 10px;
+    width:130px;
+    font-size: 15px;
+
+
+}
+#businesses
+{
+    background-color: rgb(254, 253, 224);
+    color: rgb(6, 71, 71);
+}
+
+.image-section
+{
+    height: 50%;
+    /* width: 100%; */
+    width: fit-content;
+    display: flex;
+    gap: 10px;
+    /* margin-left: 50px; */
+    position: absolute;
+    left: 70px;
+    
+    /* background-color: aqua; */
+}
+.image-section img
+{
+   
+    border: 1px solid rgb(254, 253, 224);
+    border-radius: 10px;
+}
+ #img1
+ {
+    height: 250px;
+    width: 250px;
+ }
+ #img2
+ {
+    height: 300px;
+    width: 250px;
+ }
+ #img3
+ {
+    height: 300px;
+    width: 300px;
+ }
+ #img4
+ {
+    height: 150px;
+    width: 150px;
+ }
+
+ #img5
+ {
+    height: 300px;
+    width: 250px;
+ }
+
+
+ .video-section
+ {
+    height: 100vh;
+    width: 100%;
+    flex-direction: column;
+   align-items: center;
+    display: flex;
+    position: relative;
+ }
+ .video-section-content
+ {
+    height: 30%;
+    width: 100%;
+    /* background-color: aqua; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+   
+
+ }
+ .video-section-content h1
+ {
+    font-size: 40px;
+    color: rgb(6, 71, 71);
+ }
+ .video-section-content p
+ {
+    /* font-size: 30px; */
+    color: rgb(6, 71, 71);
+    padding-top: 20px;
+
+    /* text-align: justify; */
+ }
+
+ .video-section-video
+ {
+    height: 70%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: aqua; */
+
+ }
+ .video-section-video video
+ {
+    height: 70%;
+    width: 70%;
+    border: 1px solid none;
+    border-radius: 10px;
+
+ }
+ .services-section-customers
+ {
+    height: 100vh;
+    width: 100%;
+    background-color: rgb(203, 243, 243);
+    display: flex;
+    position: relative;
+    /* justify-content: center;
+    align-items: center; */
+  
+ }
+ 
+.services-section-customers-content
+{
+    /* background-color: aqua; */
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+     justify-content: center; 
+     text-align: center;
+    align-items: center; 
+    color:  rgb(6, 71, 71);
+}
+.services-section-customers h1
+{
+    font-size: 40px;
+    text-align: left;
+
+    /* position: relative;
+    left: 100px;
+    top: 90px; */
+    
+
+}
+.services-section-customers p
+{
+    text-align: left;
+    padding: 20px;
+    
+    /* margin-top: 20px; */
+    /* font-size: 20px; */
+    word-spacing: 10px;
+    line-height: 25px;
+    
+    
+    /* position: relative; */
+    /* left: 100px;
+    top: 60px; */
+}
+.services-section-customers-image{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.services-section-customers-image img
+{
+    height: 70%;
+    width: 60%;
+    /* position: absolute; */
+    /* top: 100px;
+    right: 50px; */
+}
+
+.support-section
+{
+    height: 100vh;
+    width: 100%;
+    background-color: bisque;
+    color: rgb(6, 71, 71);
+    display: flex;
+    position: relative;
+
+
+}
+.support-section-content
+{
+    height: 100vh;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    text-align: left;
+    margin-left: 5%;
+}
+.support-section-content h1
+{
+    font-size: 50px;
+
+}
+.support-section-content p
+{
+    padding-top: 20px;
+    word-spacing: 5px;
+    /* margin-left: 90px; */
+    font-size: 20px;
+
+}
+
+.support-section-image 
+{
+    height: 100vh;
+    width: 50%;
+    display: flex;
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.support-section-image img
+{
+    border: 1px solid none;
+    border-radius: 30px;
+
+}
+#support-img1
+{
+    height: 150px;
+    width: 150px;
+    position: relative;
+    left: 100px;
+    /* top: 30px; */
+}
+#support-img2
+{
+    height: 200px;
+    width: 200px;
+    position: relative;
+}
+#support-img3
+{
+    height: 350px;
+    width: 350px;
+    position: relative;
+    bottom: 50px;
+}
+#support-img4
+{
+    height: 150px;
+    width: 150px;
+    position: relative;
+    left: 20px;
+    bottom: 90px;
+}
+#trophy
+{
+    position: absolute;
+    font-size: 60px;
+    color: white;
+    border: 1px solid white;
+    background-color:  rgb(6, 71, 71);
+    border-radius: 50%;
+    padding: 30px;
+    left: 270px;
+    top: 200px;
+
+}
+.support-section-image i
+{
+    position: relative;
+    color: black;
+}
+
+.costs-section
+{
+    height: 100vh;
+width: 100%;
+background-color:rgb(229, 203, 252);
+display: flex;
+position: relative;
+}
+.costs-content-section 
+{
+    height: 100vh;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    padding-left: 5%;
+ 
+
+
+
+}
+.costs-content-section h1
+{
+    font-size: 40px;
+    color: rgb(6, 71, 71);
+    text-align: left;
+    display: flex;
+    margin-bottom: 20px;
+    
+
+}
+
+.costs-content-section p
+{
+    
+    color: rgb(6, 71, 71);
+    word-spacing: 15px;
+    line-height: 25px;
+    font-size: 20px;
+
+}
+
+
+.costs-section-image
+{
+    height: 100vh;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.costs-section-image img
+{
+    height: 70%;
+    width: 70%;
+}
+.amt
+{
+    height: 100px;
+    width: 250px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    position: absolute;
+    top: 100px;
+    right: 500px;
+    /* left: 350px; */
+}
+.Experience
+{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    position: relative;
+}
+.Experience-image
+{
+    height: 100vh;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.Experience-content 
+{
+    height: 100vh;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    text-align: left;
+}
+.Experience-content h1
+{
+    font-size: 40px;
+    color: rgb(6, 71, 71);
+    margin-bottom: 20px;
+
+}
+
+.Experience-content p
+{
+    line-height: 30px;
+    font-size: 20px;
+}
+.Experience-content button
+{
+    padding: 20px;
+    /* height: 50px; */
+    width: 170px;
+    background-color: rgb(6, 71, 71);
+    color: white;
+    border: 1px solid rgb(6, 71, 71);
+    border-radius: 10px;
+    margin-top: 30px;
+    font-weight: bold;
+}
+.Experience-image img
+{
+    height: 70%;
+    width: 70%;    
+}
+
+.footer-section
+{
+    height: 50vh;
+    width: 100%;
+    display: flex;
+    position: relative;
+    background-color:rgb(254, 253, 224);
+
+}
+
+
+.icons-section
+{
+    height: 50vh;
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    /* justify-content: center; */
+    /* background-color: aqua; */
+}
+
+.icons-section h1
+{
+    color:   rgb(6, 71, 71);
+    position: absolute;
+    top: 60px;
+    left: 50px;
+
+    
+
+
+
+
+}
+
+.icons-section div
+{
+    gap: 10px;
+    color: black;
+}
+.icons-section-icons
+{
+    position: absolute;
+    top: 130px;
+    left: 50px;
+
+
+}
+.icons-section-icons a
+{
+    color: white;
+   border: 1px solid rgb(6, 71, 71);
+   background-color: rgb(6, 71, 71);
+   border-radius: 50%;
+   padding: 10px;
+   font-size: 15px;
+   margin: 5px;
+
+}
+
+#copyright
+{
+   color: rgb(6, 71, 71);
+   position: absolute;
+   bottom: 50px;
+   left: 50px;
+
+}
+.contact-section
+{
+    height: 50vh;
+    width: 75%;
+    display: flex;
+    gap: 10%;
+    color: rgb(6, 71, 71);
+    position: relative;
+    justify-content: center;
+    /* align-items: center; */
+    flex-grow: 1;
+    top: 70px;
+
+    
+}
+.contact-section li
+{
+    list-style: none;
+    padding: 5px;
+    margin-top: 10px;
+}
+
+.bottom
+
+{
+    position: absolute;
+    bottom: 100px;
+    display: flex;
+    gap: 40px;
+    right: 100px;
+    
+}
+
+/* ---------------- Hover Effects ---------------- */
+
+/* Nav hover */
+.heading ul li:hover {
+  color: orange;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
+
+/* Sign Up button hover */
+.heading button:hover {
+  background-color: orange;
+  color: white;
+  transform: scale(1.05);
+  transition: all 0.3s ease-in-out;
+}
+
+/* Main buttons hover */
+.main-button button:hover,
+.Experience-content button:hover {
+  background-color: orange;
+  border-color: orange;
+  transform: scale(1.05);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+/* Image hover */
+.image-section img:hover,
+.services-section-customers-image img:hover,
+.support-section-image img:hover,
+.costs-section-image img:hover,
+.Experience-image img:hover {
+  transform: scale(1.05);
+  transition: all 0.4s ease-in-out;
+  cursor: pointer;
+}
+
+/* Footer icons hover */
+.icons-section-icons a:hover {
+  background-color: orange;
+  border-color: orange;
+  transform: scale(1.2);
+  transition: all 0.3s ease-in-out;
+}
+
+/* ---------------- Keyframe Animations ---------------- */
+
+/* Fade in from bottom */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Fade in from left */
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Pulse for highlighted items */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* Bounce */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+/* Apply animations to hero content */
+.left-content h1, .right-content p, .main-button {
+  animation: fadeInUp 1s ease forwards;
+}
+
+/* Video title bounce */
+.video-section-content h1 {
+  animation: bounce 3s infinite;
+}
+
+/* Costs "amount" pulse */
+.amt {
+  animation: pulse 2.5s infinite;
+}
+
+/* ---------------- Responsive (Tablet & Mobile) ---------------- */
+
+@media (max-width: 1024px) {
+  .heading ul {
+    right: auto;
+    left: auto;
+    gap: 15px;
+    font-size: 18px;
+  }
+  .heading button {
+    width: 140px;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .heading {
+    flex-direction: column;
+    height: auto;
+    gap: 10px;
+    padding: 10px;
+  }
+  #logo {
+    position: static;
+    margin-bottom: 10px;
+  }
+  .heading ul {
+    position: static;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  .heading button {
+    position: static;
+  }
+
+  .content-section {
+    flex-direction: column;
+    height: auto;
+    padding: 20px;
+    text-align: center;
+  }
+  .left-content, .right-content {
+    width: 100%;
+    text-align: center;
+    position: static;
+  }
+  .image-section {
+    flex-wrap: wrap;
+    justify-content: center;
+    position: static;
+  }
+  .image-section img {
+    width: 45%;
+    height: auto;
+  }
+
+  .services-section-customers {
+    flex-direction: column;
+    height: auto;
+  }
+  .services-section-customers-content, 
+  .services-section-customers-image {
+    width: 100%;
+    text-align: center;
+  }
+
+  .support-section {
+    flex-direction: column;
+    height: auto;
+    padding: 20px;
+  }
+  .support-section-content,
+  .support-section-image {
+    width: 100%;
+    text-align: center;
+    margin: 0;
+  }
+  .support-section-image {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .support-section-image img {
+    width: 45%;
+    height: auto;
+    position: static;
+  }
+  #trophy {
+    position: static;
+    margin: 20px auto;
+  }
+
+  .costs-section {
+    flex-direction: column;
+    height: auto;
+    text-align: center;
+    padding: 20px;
+  }
+  .costs-content-section, 
+  .costs-section-image {
+    width: 100%;
+  }
+  .amt {
+    position: static;
+    margin: 20px auto;
+  }
+
+  .Experience {
+    flex-direction: column;
+    height: auto;
+    text-align: center;
+    padding: 20px;
+  }
+  .Experience-image, .Experience-content {
+    width: 100%;
+  }
+
+  .footer-section {
+    flex-direction: column;
+    height: auto;
+    padding: 20px;
+    gap: 20px;
+  }
+  .icons-section, .contact-section {
+    width: 100%;
+    text-align: center;
+    position: static;
+  }
+  .bottom {
+    position: static;
+    margin-top: 20px;
+    justify-content: center;
+  }
+}
+
+
+
+
+
+
+</style>
+<body>
+    <header class="heading">
+        <h1 id="logo">Formonix.</h1> 
+
+        <nav>
+            <ul>
+                <li>Why Stant?</li>
+                <li>Customers</li>
+                <li>Pricing</li>
+                <li>Learn</li>
+                <li>Company</li>
+            </ul>
+            
+        </nav>
+
+        <button>Sign Up</button>
+
+    </header>
+
+
+    <section class="main-section">
+      <div class="content-section">
+        <div class="left-content">
+            <h1>A student workforce <br> that's transforming <br> hospitality</h1>
+        </div>
+        <div class="right-content">
+            <p>Stande connets students to hospitality <br> business for short shifts of work, taking <br> pressure off core.</p>
+            <div class="main-button"><button>Students</button>
+                <button id="businesses">Businesses</button></div>
+            
+        </div>
+       
+      </div>
+      <div class="image-section">
+        <img id="img1" src="./formonix/pexels-cottonbro-7437094.jpg" alt="">
+        <img id="img2" src="./formonix/pexels-fatma-selin-sarierikli-500641714-16153533.jpg" alt="">
+        <img id="img3" src=".//formonix/pexels-fauxels-3184611.jpg" alt="">
+        <img id="img4" src="./formonix/pexels-tima-miroshnichenko-6913350.jpg" alt="">
+        <img id="img5"  src="./formonix/pexels-vlada-karpovich-4050447.jpg" alt="">
+
+      </div>
+
+    </section>
+
+    <section class="video-section">
+        <div class="video-section-content">
+            <h1>See how stande work</h1>
+           <p>We connect you with students who work during your 2-3 hour peak periods <br> each day, allowing you to improve the and team experience,</p>
+        </div>
+
+        <div class="video-section-video">
+            <video src="./formonix/large.mp4" controls></video>
+        </div>
+    </section>
+
+   <section class="services-section-customers">
+
+           <div class="services-section-customers-content">
+            <h1>Give your customers <br> the experience they <br> deserve</h1>
+            <p>Enchance the customer experience by having  <br>
+                enough hands to deliver on your promise,
+                 no  <br> matter the time of day</p>
+        
+    </div>
+
+    <div class="services-section-customers-image">
+        <img src="./formonix/pexels-photo-4393517.webp" alt="">
+    </div>
+   </section>
+
+   <section class="support-section">
+    <div class="support-section-content">
+        <h1>Do more to help <br> your team thrive</h1>
+        <p>Provide support for your team at those daily <br> peaks when they need it most, and  breed a <br> happier work place with stable and <br> committed employees.</p>
+    </div>
+
+    <div class="support-section-image">
+        <img id="support-img1" src="./formonix/artist-white_1368-3546.avif" alt="">
+        <img id="support-img2" src="./formonix/face-young-handsome-man-looking-camera_251136-10414.avif" alt="">
+        <img id="support-img3" src="./formonix/handsome-smiling-man-looking-with-disbelief_176420-19591.jpg" alt="">
+        <img id="support-img4" src="./formonix/OIP (6).jpeg" alt="">
+        
+
+        <i id="trophy" class="fa-solid fa-trophy">
+
+            
+        </i>
+    </div>
+   </section>
+   <section class="costs-section">
+
+    <div class="costs-content-section">
+
+        <h1>Keep overall costs <br> under control</h1>
+        <p>Deploy your team with more prevision so you  <br> can drive revenue during your busy periods, and <br> stay affordable during quiet periods</p>
+
+
+
+
+
+    </div>
+
+    <div class="costs-section-image">
+
+        <img src="./formonix/pexels-photo-4065155.webp" alt="">
+
+        <div class="amt"> 
+            <!-- <div>
+                <i class="fa-solid fa-square-check"></i>
+            </div> -->
+            <h1 id="amount">$340</h1>
+            <p>Weekly wage reduction</p>
+        </div>
+    </div>
+
+
+</section>
+
+<section class="Experience">
+    <div class="Experience-image">
+        <img src="./formonix/pexels-photo-2379004.jpeg" alt="">
+
+
+    </div>
+
+
+    <div class="Experience-content">
+    <h1>Grays Court Hotel York <br> maximises their customer <br> and team experiences</h1>
+
+    <p>Using Formonix students has meant key staff are able <br> to dedicate themselves to customer relations and <br> guest iteractions leading to a much improved customer experience. Find out more.</p>
+   
+
+    <button>Read All Story</button>
+</div>
+
+
+
+</section>
+
+<footer class="footer-section">
+
+    <div class="icons-section">
+
+        <h1>Formonix.</h1>
+        <div class="icons-section-icons">
+        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+    </div>
+    <p id ="copyright">© 2022 Formix Limited. All rights reserved.</p>
+    </div>
+
+    <div class="contact-section">
+        <div class="platform">
+            <h1>Platform</h1>
+            <ul>
+                <li>Shop All</li>
+                <li>Bags</li>
+                <li>Interior Organizers</li>
+            </ul>
+        </div>
+
+        <div class="For-Students">
+            <h1>For Students</h1>
+            <ul>
+                <li>Overview</li>
+                <li>Privacy Policy</li>
+                <li>Terms of Service</li>
+            </ul>
+        </div>
+
+        <div class="Learn">
+            <h1>Learn</h1>
+            <ul>
+                <li>Resources</li>
+                <li>From the Blog</li>
+                <li>Latest News</li>
+            </ul>
+        </div>
+
+
+        <div class="Support">
+
+            <h1>Support</h1>
+
+           <ul>
+            <li>FAQ & Returns</li>
+            <li>Corporate Gifting</li>
+            <li>Bravaa@gmail.com</li>
+           </ul>
+        </div>
+
+       
+
+        <div class="bottom">
+            <p>Terms & Conditions</p>
+            <p> Privacy Policy</p>
+        </div>
+        
+
+    </div>
+
+   
+</footer>
+
+    
+</body>
+</html>
