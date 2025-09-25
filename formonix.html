@@ -4,1093 +4,1020 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formonix</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
 <style>
-    *{
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-
+/* Global Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body
-{
-    height: 100vh;
-    width: 100%;
-    flex-direction: column;
-
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
 }
 
-.heading
-{
+/* Header Styles */
+.heading {
     width: 100%;
-    height: 70px;
-    /* background-color: aqua; */
+    min-height: 70px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 1000; /* Ensure header is on top */
 }
 
-#logo
-{
-    display: flex;
-    position: absolute;
-    left: 30px;
-    top: 20px;
-
-    align-items: center;
+#logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: rgb(6, 71, 71);
 }
 
-
-.heading ul
-{
+.nav-menu {
     display: flex;
     list-style: none;
-    justify-content: center;
-    /* align-items: center; */
-
-    gap: 20px;
-    position: absolute;
-    font-size: 20px;
-    right: 300px;
-    left: 300px;
-
+    gap: 30px;
 }
 
-.heading button
+.nav-menu li {
+    font-size: 16px;
+    /* FIX: Ensure li's don't have hover, only the anchor tags */
+}
 
-{
-    position: absolute;
-    right: 0px;
-    height: 70px;
-    width: 170px;
-    font-size: 20px;
+.nav-menu li a {
+    color: rgb(6, 71, 71);
+    cursor: pointer;
+    transition: color 0.3s ease;
+    text-decoration: none; /* Remove underline from links */
+}
+
+.nav-menu li a:hover {
+    color: orange;
+}
+
+/* FIX: Styling for the desktop signup button (now a link) */
+.signup-btn {
+    padding: 12px 24px;
+    font-size: 16px;
     background-color: rgb(6, 71, 71);
-    border-top-right-radius: 30px;
-
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none; /* Treat like a button */
+    display: inline-block;
+    font-weight: bold;
 }
-.main-section
 
-{
-    height: 100vh;
-    width: 100%;
-    background-color:rgb(254, 253, 224);
+.signup-btn:hover {
+    background-color: orange;
+    transform: scale(1.05);
+}
+
+/* Mobile Menu */
+.mobile-menu-btn {
+    display: none;
     flex-direction: column;
-    position: relative;
-
+    cursor: pointer;
+    padding: 5px;
 }
-.content-section
-{
-    height: 50%;
+
+.mobile-menu-btn span {
+    width: 25px;
+    height: 3px;
+    background-color: rgb(6, 71, 71);
+    margin: 3px 0;
+    transition: 0.3s;
+}
+
+/* Main Section */
+.main-section {
+    min-height: 100vh;
     width: 100%;
-    display: flex;
-}
-
-
-.left-content
-{
-    width: 50%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: left;
-    position: relative;
-    left: 20px;
-    font-size: 35px;
-    color: rgb(6, 71, 71);
-   
-
-
-}
-.right-content
-{
-    margin-top: 20px;
-    width: 50%;
-    height: 100%;
+    background-color: rgb(254, 253, 224);
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    padding: 40px 20px;
+}
+
+.content-section {
+    display: flex;
     align-items: center;
-    text-align: left;
-    padding-right: 20px;
-
+    gap: 40px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
 }
 
-.right-content p
-{
-    font-size: 25px;
-    margin-right: 30px;
+.left-content {
+    flex: 1;
+    min-width: 300px;
+}
+
+.left-content h1 {
+    font-size: clamp(28px, 5vw, 48px);
     color: rgb(6, 71, 71);
-    padding: 10px;
-    text-align: left;
-
-}
-.main-button 
-{
-    margin-top: 10px;
-    padding: 20px;
+    line-height: 1.2;
+    margin-bottom: 20px;
 }
 
-.main-button button
-{
-    padding: 15px;
-    border: 1px solid teal;
+.right-content {
+    flex: 1;
+    min-width: 300px;
+}
+
+.right-content p {
+    font-size: clamp(16px, 2.5vw, 22px);
+    color: rgb(6, 71, 71);
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+.main-button {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.main-button button {
+    padding: 15px 25px;
+    border: 2px solid rgb(6, 71, 71);
     background-color: rgb(6, 71, 71);
     color: white;
     font-weight: bold;
     border-radius: 10px;
-    margin: 10px;
-    width:130px;
-    font-size: 15px;
-
-
+    font-size: 16px;
+    cursor: pointer;
+    min-width: 130px;
+    transition: all 0.3s ease;
 }
-#businesses
-{
+
+#businesses {
     background-color: rgb(254, 253, 224);
     color: rgb(6, 71, 71);
 }
 
-.image-section
-{
-    height: 50%;
-    /* width: 100%; */
-    width: fit-content;
-    display: flex;
-    gap: 10px;
-    /* margin-left: 50px; */
-    position: absolute;
-    left: 70px;
-    
-    /* background-color: aqua; */
+.main-button button:hover {
+    background-color: orange;
+    border-color: orange;
+    transform: scale(1.05);
 }
-.image-section img
-{
-   
-    border: 1px solid rgb(254, 253, 224);
+
+/* Image Section */
+.image-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    justify-items: center;
+    margin-top: 40px;
+}
+
+.image-section img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    aspect-ratio: 1;
+    object-fit: cover;
     border-radius: 10px;
+    transition: transform 0.3s ease;
 }
- #img1
- {
-    height: 250px;
-    width: 250px;
- }
- #img2
- {
-    height: 300px;
-    width: 250px;
- }
- #img3
- {
-    height: 300px;
-    width: 300px;
- }
- #img4
- {
-    height: 150px;
-    width: 150px;
- }
 
- #img5
- {
-    height: 300px;
-    width: 250px;
- }
+.image-section img:hover {
+    transform: scale(1.05);
+}
 
-
- .video-section
- {
-    height: 100vh;
+/* Video Section */
+.video-section {
+    min-height: 70vh; 
     width: 100%;
-    flex-direction: column;
-   align-items: center;
-    display: flex;
-    position: relative;
- }
- .video-section-content
- {
-    height: 30%;
-    width: 100%;
-    /* background-color: aqua; */
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    position: relative;
-   
-
- }
- .video-section-content h1
- {
-    font-size: 40px;
-    color: rgb(6, 71, 71);
- }
- .video-section-content p
- {
-    /* font-size: 30px; */
-    color: rgb(6, 71, 71);
-    padding-top: 20px;
-
-    /* text-align: justify; */
- }
-
- .video-section-video
- {
-    height: 70%;
-    width: 100%;
-    display: flex;
     align-items: center;
-    justify-content: center;
-    /* background-color: aqua; */
+    padding: 60px 20px;
+    background-color: white;
+}
 
- }
- .video-section-video video
- {
-    height: 70%;
-    width: 70%;
-    border: 1px solid none;
+.video-section-content {
+    text-align: center;
+    margin-bottom: 50px;
+    max-width: 800px;
+}
+
+.video-section-content h1 {
+    font-size: clamp(28px, 5vw, 40px);
+    color: rgb(6, 71, 71);
+    margin-bottom: 20px;
+    animation: bounce 3s infinite;
+}
+
+.video-section-content p {
+    font-size: clamp(14px, 2.5vw, 18px);
+    color: rgb(6, 71, 71);
+    line-height: 1.6;
+}
+
+.video-section-video {
+    width: 100%;
+    max-width: 800px;
+}
+
+.video-section-video video {
+    width: 100%;
+    height: auto;
     border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
 
- }
- .services-section-customers
- {
-    height: 100vh;
+/* Services Section */
+.services-section-customers {
+    min-height: 100vh;
     width: 100%;
     background-color: rgb(203, 243, 243);
     display: flex;
-    position: relative;
-    /* justify-content: center;
-    align-items: center; */
-  
- }
- 
-.services-section-customers-content
-{
-    /* background-color: aqua; */
-    height: 100%;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-     justify-content: center; 
-     text-align: center;
-    align-items: center; 
-    color:  rgb(6, 71, 71);
+    align-items: center;
+    padding: 60px 20px;
+    gap: 40px;
 }
-.services-section-customers h1
-{
-    font-size: 40px;
-    text-align: left;
 
-    /* position: relative;
-    left: 100px;
-    top: 90px; */
-    
-
-}
-.services-section-customers p
-{
-    text-align: left;
+.services-section-customers-content {
+    flex: 1;
+    min-width: 300px;
     padding: 20px;
-    
-    /* margin-top: 20px; */
-    /* font-size: 20px; */
-    word-spacing: 10px;
-    line-height: 25px;
-    
-    
-    /* position: relative; */
-    /* left: 100px;
-    top: 60px; */
 }
-.services-section-customers-image{
-    height: 100vh;
-    width: 100%;
+
+.services-section-customers h1 {
+    font-size: clamp(28px, 5vw, 40px);
+    color: rgb(6, 71, 71);
+    margin-bottom: 30px;
+    line-height: 1.2;
+}
+
+.services-section-customers p {
+    font-size: clamp(16px, 2.5vw, 20px);
+    color: rgb(6, 71, 71);
+    line-height: 1.6;
+}
+
+.services-section-customers-image {
+    flex: 1;
+    min-width: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.services-section-customers-image img
-{
-    height: 70%;
-    width: 60%;
-    /* position: absolute; */
-    /* top: 100px;
-    right: 50px; */
+
+.services-section-customers-image img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
 }
 
-.support-section
-{
-    height: 100vh;
+.services-section-customers-image img:hover {
+    transform: scale(1.05);
+}
+
+/* Support Section */
+.support-section {
+    min-height: 100vh;
     width: 100%;
     background-color: bisque;
+    display: flex;
+    align-items: center;
+    justify-content: space-around; 
+    padding: 60px 20px;
+    gap: 40px;
+    position: relative;
+    overflow: hidden; 
+}
+
+.support-section-content {
+    flex: 1;
+    min-width: 300px;
+    padding: 20px;
+    z-index: 1; 
+}
+
+.support-section-content h1 {
+    font-size: clamp(28px, 5vw, 50px);
     color: rgb(6, 71, 71);
+    margin-bottom: 30px;
+    line-height: 1.2;
+}
+
+.support-section-content p {
+    font-size: clamp(16px, 2.5vw, 20px);
+    color: rgb(6, 71, 71);
+    line-height: 1.6;
+}
+
+.support-section-image {
+    flex: 1;
+    min-width: 300px;
     display: flex;
-    position: relative;
-
-
-}
-.support-section-content
-{
-    height: 100vh;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    /* align-items: center; */
-    text-align: left;
-    margin-left: 5%;
-}
-.support-section-content h1
-{
-    font-size: 50px;
-
-}
-.support-section-content p
-{
-    padding-top: 20px;
-    word-spacing: 5px;
-    /* margin-left: 90px; */
-    font-size: 20px;
-
-}
-
-.support-section-image 
-{
-    height: 100vh;
-    width: 50%;
-    display: flex;
-    position: relative;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
     justify-content: center;
     align-items: center;
+    position: relative; 
+    padding: 300px 0; 
+    margin: auto; 
 }
 
-.support-section-image img
-{
-    border: 1px solid none;
-    border-radius: 30px;
-
-}
-#support-img1
-{
-    height: 150px;
-    width: 150px;
-    position: relative;
-    left: 100px;
-    /* top: 30px; */
-}
-#support-img2
-{
+.support-section-image img {
+    position: absolute; 
+    width: 200px; 
     height: 200px;
-    width: 200px;
-    position: relative;
+    object-fit: cover;
+    border-radius: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2); 
 }
-#support-img3
-{
-    height: 350px;
-    width: 350px;
-    position: relative;
+
+.support-section-image img:hover {
+    transform: scale(1.1); 
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.support-section-image img:nth-child(1) { /* Top-left */
+    top: 50px;
+    left: 50px;
+}
+.support-section-image img:nth-child(2) { /* Top-right */
+    top: 50px;
+    right: 50px;
+}
+.support-section-image img:nth-child(3) { /* Bottom-left */
     bottom: 50px;
+    left: 50px;
 }
-#support-img4
-{
-    height: 150px;
-    width: 150px;
-    position: relative;
-    left: 20px;
-    bottom: 90px;
+.support-section-image img:nth-child(4) { /* Bottom-right */
+    bottom: 50px;
+    right: 50px;
 }
-#trophy
-{
+
+#trophy {
     position: absolute;
-    font-size: 60px;
-    color: white;
-    border: 1px solid white;
-    background-color:  rgb(6, 71, 71);
-    border-radius: 50%;
-    padding: 30px;
-    left: 270px;
-    top: 200px;
-
-}
-.support-section-image i
-{
-    position: relative;
-    color: black;
-}
-
-.costs-section
-{
-    height: 100vh;
-width: 100%;
-background-color:rgb(229, 203, 252);
-display: flex;
-position: relative;
-}
-.costs-content-section 
-{
-    height: 100vh;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    /* align-items: center; */
-    padding-left: 5%;
- 
-
-
-
-}
-.costs-content-section h1
-{
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
     font-size: 40px;
-    color: rgb(6, 71, 71);
-    text-align: left;
+    color: white;
+    background-color: rgb(6, 71, 71);
+    border-radius: 50%;
+    padding: 20px;
+    z-index: 10;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+/* Costs Section */
+.costs-section {
+    min-height: 100vh;
+    width: 100%;
+    background-color: rgb(229, 203, 252);
     display: flex;
-    margin-bottom: 20px;
-    
-
+    align-items: center;
+    padding: 60px 20px;
+    gap: 40px;
+    position: relative;
+}
+.costs-content-section {
+    flex: 1;
+    min-width: 300px;
+    padding: 20px;
 }
 
-.costs-content-section p
-{
-    
+.costs-content-section h1 {
+    font-size: clamp(28px, 5vw, 40px);
     color: rgb(6, 71, 71);
-    word-spacing: 15px;
-    line-height: 25px;
-    font-size: 20px;
-
+    margin-bottom: 30px;
+    line-height: 1.2;
 }
 
+.costs-content-section p {
+    font-size: clamp(16px, 2.5vw, 20px);
+    color: rgb(6, 71, 71);
+    line-height: 1.6;
+}
 
-.costs-section-image
-{
-    height: 100vh;
-    width: 50%;
+.costs-section-image {
+    flex: 1;
+    min-width: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+}
+.costs-section-image img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 10px;
+}
 
-}
-.costs-section-image img
-{
-    height: 70%;
-    width: 70%;
-}
-.amt
-{
-    height: 100px;
-    width: 250px;
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 20px;
+.amt {
     position: absolute;
-    top: 100px;
-    right: 500px;
-    /* left: 350px; */
+    top: 20%;
+    right: 5%; 
+    background-color: white;
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    animation: pulse 2.5s infinite;
+    min-width: 200px;
 }
-.Experience
-{
-    height: 100vh;
+.amt h1 {
+    font-size: 24px;
+    color: rgb(6, 71, 71);
+    margin-bottom: 10px;
+}
+
+.amt p {
+    font-size: 14px;
+    color: rgb(6, 71, 71);
+}
+
+/* Experience Section */
+.Experience {
+    min-height: 100vh;
     width: 100%;
     display: flex;
-    position: relative;
+    align-items: center;
+    padding: 60px 20px;
+    gap: 40px;
 }
-.Experience-image
-{
-    height: 100vh;
-    width: 50%;
+
+.Experience-image {
+    flex: 1;
+    min-width: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
-
-}
-.Experience-content 
-{
-    height: 100vh;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    /* align-items: center; */
-    text-align: left;
-}
-.Experience-content h1
-{
-    font-size: 40px;
-    color: rgb(6, 71, 71);
-    margin-bottom: 20px;
-
 }
 
-.Experience-content p
-{
-    line-height: 30px;
-    font-size: 20px;
+.Experience-image img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
 }
-.Experience-content button
-{
+
+.Experience-image img:hover {
+    transform: scale(1.05);
+}
+
+.Experience-content {
+    flex: 1;
+    min-width: 300px;
     padding: 20px;
-    /* height: 50px; */
-    width: 170px;
+}
+
+.Experience-content h1 {
+    font-size: clamp(24px, 4vw, 40px);
+    color: rgb(6, 71, 71);
+    margin-bottom: 30px;
+    line-height: 1.2;
+}
+
+.Experience-content p {
+    font-size: clamp(14px, 2.5vw, 20px);
+    color: rgb(6, 71, 71);
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.Experience-content button {
+    padding: 15px 25px;
     background-color: rgb(6, 71, 71);
     color: white;
-    border: 1px solid rgb(6, 71, 71);
+    border: none;
     border-radius: 10px;
-    margin-top: 30px;
+    font-size: 16px;
     font-weight: bold;
-}
-.Experience-image img
-{
-    height: 70%;
-    width: 70%;    
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-.footer-section
-{
-    height: 50vh;
-    width: 100%;
-    display: flex;
-    position: relative;
-    background-color:rgb(254, 253, 224);
-
-}
-
-
-.icons-section
-{
-    height: 50vh;
-    width: 25%;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    /* justify-content: center; */
-    /* background-color: aqua; */
-}
-
-.icons-section h1
-{
-    color:   rgb(6, 71, 71);
-    position: absolute;
-    top: 60px;
-    left: 50px;
-
-    
-
-
-
-
-}
-
-.icons-section div
-{
-    gap: 10px;
-    color: black;
-}
-.icons-section-icons
-{
-    position: absolute;
-    top: 130px;
-    left: 50px;
-
-
-}
-.icons-section-icons a
-{
-    color: white;
-   border: 1px solid rgb(6, 71, 71);
-   background-color: rgb(6, 71, 71);
-   border-radius: 50%;
-   padding: 10px;
-   font-size: 15px;
-   margin: 5px;
-
-}
-
-#copyright
-{
-   color: rgb(6, 71, 71);
-   position: absolute;
-   bottom: 50px;
-   left: 50px;
-
-}
-.contact-section
-{
-    height: 50vh;
-    width: 75%;
-    display: flex;
-    gap: 10%;
-    color: rgb(6, 71, 71);
-    position: relative;
-    justify-content: center;
-    /* align-items: center; */
-    flex-grow: 1;
-    top: 70px;
-
-    
-}
-.contact-section li
-{
-    list-style: none;
-    padding: 5px;
-    margin-top: 10px;
-}
-
-.bottom
-
-{
-    position: absolute;
-    bottom: 100px;
-    display: flex;
-    gap: 40px;
-    right: 100px;
-    
-}
-
-/* ---------------- Hover Effects ---------------- */
-
-/* Nav hover */
-.heading ul li:hover {
-  color: orange;
-  cursor: pointer;
-  transition: color 0.3s ease-in-out;
-}
-
-/* Sign Up button hover */
-.heading button:hover {
-  background-color: orange;
-  color: white;
-  transform: scale(1.05);
-  transition: all 0.3s ease-in-out;
-}
-
-/* Main buttons hover */
-.main-button button:hover,
 .Experience-content button:hover {
-  background-color: orange;
-  border-color: orange;
-  transform: scale(1.05);
-  transition: all 0.3s ease-in-out;
-  cursor: pointer;
+    background-color: orange;
+    transform: scale(1.05);
 }
 
-/* Image hover */
-.image-section img:hover,
-.services-section-customers-image img:hover,
-.support-section-image img:hover,
-.costs-section-image img:hover,
-.Experience-image img:hover {
-  transform: scale(1.05);
-  transition: all 0.4s ease-in-out;
-  cursor: pointer;
-}
-
-/* Footer icons hover */
-.icons-section-icons a:hover {
-  background-color: orange;
-  border-color: orange;
-  transform: scale(1.2);
-  transition: all 0.3s ease-in-out;
-}
-
-/* ---------------- Keyframe Animations ---------------- */
-
-/* Fade in from bottom */
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(50px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Fade in from left */
-@keyframes fadeInLeft {
-  from { opacity: 0; transform: translateX(-50px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-
-/* Pulse for highlighted items */
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-  100% { transform: scale(1); }
-}
-
-/* Bounce */
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-5px); }
-}
-
-/* Apply animations to hero content */
-.left-content h1, .right-content p, .main-button {
-  animation: fadeInUp 1s ease forwards;
-}
-
-/* Video title bounce */
-.video-section-content h1 {
-  animation: bounce 3s infinite;
-}
-
-/* Costs "amount" pulse */
-.amt {
-  animation: pulse 2.5s infinite;
-}
-
-/* ---------------- Responsive (Tablet & Mobile) ---------------- */
-
-@media (max-width: 1024px) {
-  .heading ul {
-    right: auto;
-    left: auto;
-    gap: 15px;
-    font-size: 18px;
-  }
-  .heading button {
-    width: 140px;
-    font-size: 18px;
-  }
-}
-
-@media (max-width: 768px) {
-  .heading {
-    flex-direction: column;
-    height: auto;
-    gap: 10px;
-    padding: 10px;
-  }
-  #logo {
-    position: static;
-    margin-bottom: 10px;
-  }
-  .heading ul {
-    position: static;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-bottom: 10px;
-  }
-  .heading button {
-    position: static;
-  }
-
-  .content-section {
-    flex-direction: column;
-    height: auto;
-    padding: 20px;
-    text-align: center;
-  }
-  .left-content, .right-content {
+/* Footer Section */
+.footer-section {
     width: 100%;
-    text-align: center;
-    position: static;
-  }
-  .image-section {
-    flex-wrap: wrap;
-    justify-content: center;
-    position: static;
-  }
-  .image-section img {
-    width: 45%;
-    height: auto;
-  }
-
-  .services-section-customers {
-    flex-direction: column;
-    height: auto;
-  }
-  .services-section-customers-content, 
-  .services-section-customers-image {
-    width: 100%;
-    text-align: center;
-  }
-
-  .support-section {
-    flex-direction: column;
-    height: auto;
-    padding: 20px;
-  }
-  .support-section-content,
-  .support-section-image {
-    width: 100%;
-    text-align: center;
-    margin: 0;
-  }
-  .support-section-image {
+    background-color: rgb(254, 253, 224);
+    padding: 60px 20px 20px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-  }
-  .support-section-image img {
-    width: 45%;
-    height: auto;
-    position: static;
-  }
-  #trophy {
-    position: static;
-    margin: 20px auto;
-  }
-
-  .costs-section {
-    flex-direction: column;
-    height: auto;
-    text-align: center;
-    padding: 20px;
-  }
-  .costs-content-section, 
-  .costs-section-image {
-    width: 100%;
-  }
-  .amt {
-    position: static;
-    margin: 20px auto;
-  }
-
-  .Experience {
-    flex-direction: column;
-    height: auto;
-    text-align: center;
-    padding: 20px;
-  }
-  .Experience-image, .Experience-content {
-    width: 100%;
-  }
-
-  .footer-section {
-    flex-direction: column;
-    height: auto;
-    padding: 20px;
-    gap: 20px;
-  }
-  .icons-section, .contact-section {
-    width: 100%;
-    text-align: center;
-    position: static;
-  }
-  .bottom {
-    position: static;
-    margin-top: 20px;
-    justify-content: center;
-  }
+    gap: 40px;
 }
 
+.icons-section {
+    min-width: 250px;
+    flex: 1;
+}
+
+.icons-section h1 {
+    color: rgb(6, 71, 71);
+    margin-bottom: 30px;
+    font-size: 24px;
+}
+
+.icons-section-icons {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.icons-section-icons a {
+    color: white;
+    background-color: rgb(6, 71, 71);
+    border-radius: 50%;
+    padding: 12px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.icons-section-icons a:hover {
+    background-color: orange;
+    transform: scale(1.2);
+}
+
+#copyright {
+    color: rgb(6, 71, 71);
+    font-size: 14px;
+}
+
+.contact-section {
+    flex: 2;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+}
+
+.contact-section h1 {
+    color: rgb(6, 71, 71);
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.contact-section ul {
+    list-style: none;
+}
+
+.contact-section li {
+    padding: 5px 0;
+    color: rgb(6, 71, 71);
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.contact-section li:hover {
+    color: orange;
+}
+
+.bottom {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(6, 71, 71, 0.2);
+    flex-wrap: wrap;
+}
+
+.bottom p {
+    color: rgb(6, 71, 71);
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.bottom p:hover {
+    color: orange;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Apply animations */
+.left-content h1, .right-content p, .main-button {
+    animation: fadeInUp 1s ease forwards;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    /* --- FIX: Mobile Navigation Menu --- */
+    .nav-menu {
+        display: none; 
+        position: absolute;
+        top: 70px; 
+        left: 0;
+        width: 100%;
+        background-color: white; 
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        flex-direction: column; 
+        align-items: center;
+        padding: 20px 0;
+        gap: 0; 
+        z-index: 999;
+    }
+    
+    .nav-menu.show {
+        display: flex;
+    }
+    
+    .nav-menu li {
+        padding: 10px 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .mobile-menu-btn {
+        display: flex;
+    }
+    
+    .heading {
+        padding: 0 20px;
+    }
+    
+    /* NEW: Style the sign up link inside the mobile menu to look like a button */
+    .nav-menu li a.signup-link {
+        padding: 10px 30px; 
+        background-color: rgb(6, 71, 71);
+        color: white;
+        border-radius: 20px;
+        text-decoration: none;
+        display: inline-block; 
+        font-weight: bold;
+        margin: 10px 0;
+    }
+    
+    /* Hiding the desktop button in the header for mobile */
+    .heading > .signup-btn { 
+        display: none;
+    }
+    
+    .content-section {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .services-section-customers,
+    .support-section,
+    .costs-section,
+    .Experience {
+        flex-direction: column;
+        text-align: center;
+        min-height: auto;
+        padding: 40px 20px;
+        justify-content: center; 
+    }
+
+    /* Support Section Responsive */
+    .support-section-image {
+        max-width: 400px; 
+        padding: 200px 0; 
+        margin-top: 40px; 
+        min-width: auto; 
+    }
+    
+    .support-section-image img {
+        width: 150px; 
+        height: 150px;
+    }
+
+    .support-section-image img:nth-child(1) { 
+        top: 20px; 
+        left: 20px;
+    }
+    .support-section-image img:nth-child(2) { 
+        top: 20px;
+        right: 20px;
+    }
+    .support-section-image img:nth-child(3) { 
+        bottom: 20px;
+        left: 20px;
+    }
+    .support-section-image img:nth-child(4) { 
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    #trophy {
+        font-size: 30px;
+        padding: 15px;
+        left: 50%; 
+    }
+    
+    /* MODIFIED: .amt box alignment on mobile */
+    .costs-section-image {
+        flex-direction: column;
+        /* Add this to center the image and the .amt box when stacked */
+        align-items: center; 
+    }
+     .amt {
+        position: static; /* Reset position for mobile */
+        margin-top: -50px; /* Move it up by 50px (adjust as needed) */
+        margin-bottom: 20px; /* Add some space below it */
+        /* Center the box itself if it's smaller than the container */
+        margin-left: auto;
+        margin-right: auto;
+        align-self: center; /* Override flex-end if costs-section-image is flex column */
+        max-width: 250px;
+    }
 
 
+    .contact-section {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .bottom {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    
+    .image-section {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+    
+    .costs-section-image img {
+        max-width: 350px; 
+    }
+}
+@media (max-width: 480px) {
+    .main-button {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .main-button button {
+        width: 100%;
+        max-width: 200px;
+    }
+    
+    .contact-section {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Support Section Mobile Positioning */
+    .support-section-image {
+        max-width: 300px; 
+        padding: 150px 0; 
+    }
+    
+    .support-section-image img {
+        width: 100px; 
+        height: 100px;
+    }
 
+    .support-section-image img:nth-child(1) { 
+        top: 10px;
+        left: 10px;
+    }
+    .support-section-image img:nth-child(2) { 
+        top: 10px;
+        right: 10px;
+    }
+    .support-section-image img:nth-child(3) { 
+        bottom: 10px;
+        left: 10px;
+    }
+    .support-section-image img:nth-child(4) { 
+        bottom: 10px;
+        right: 10px;
+    }
 
-
+    .image-section {
+        grid-template-columns: 1fr;
+    }
+    
+    .bottom {
+        text-align: center;
+    }
+}
 </style>
+
 <body>
     <header class="heading">
         <h1 id="logo">Formonix.</h1> 
 
-        <nav>
-            <ul>
-                <li>Why Stant?</li>
-                <li>Customers</li>
-                <li>Pricing</li>
-                <li>Learn</li>
-                <li>Company</li>
-            </ul>
-            
+        <nav class="nav-menu">
+            <li><a href="#main-section">Why Stant?</a></li>
+            <li><a href="#customers-section">Customers</a></li>
+            <li><a href="#costs-section">Pricing</a></li>
+            <li><a href="#video-section">Learn</a></li>
+            <li><a href="#experience-section">Company</a></li>
+            <!-- <li><a href="#" class="signup-link signup-btn">Sign Up</a></li> -->
         </nav>
 
-        <button>Sign Up</button>
+        <div class="mobile-menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
 
+        <a href="#" class="signup-btn">Sign Up</a>
     </header>
 
-
-    <section class="main-section">
-      <div class="content-section">
-        <div class="left-content">
-            <h1>A student workforce <br> that's transforming <br> hospitality</h1>
+    <section class="main-section" id="main-section">
+        <div class="content-section">
+            <div class="left-content">
+                <h1>A student workforce that's transforming hospitality</h1>
+            </div>
+            <div class="right-content">
+                <p>Stande connects students to hospitality business for short shifts of work, taking pressure off core.</p>
+                <div class="main-button">
+                    <button>Students</button>
+                    <button id="businesses">Businesses</button>
+                </div>
+            </div>
         </div>
-        <div class="right-content">
-            <p>Stande connets students to hospitality <br> business for short shifts of work, taking <br> pressure off core.</p>
-            <div class="main-button"><button>Students</button>
-                <button id="businesses">Businesses</button></div>
-            
+        
+        <div class="image-section">
+            <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=300&h=300&fit=crop" alt="Student working">
+            <img src="https://images.unsplash.com/photo-1504384764586-bb4cdc1707b0?w=300&h=300&fit=crop" alt="Restaurant service">
+            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=300&h=300&fit=crop" alt="Team meeting">
+            <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=300&h=300&fit=crop" alt="Customer service">
+            <img src="https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=300&h=300&fit=crop" alt="Hospitality work">
         </div>
-       
-      </div>
-      <div class="image-section">
-        <img id="img1" src="./formonix/pexels-cottonbro-7437094.jpg" alt="">
-        <img id="img2" src="./formonix/pexels-fatma-selin-sarierikli-500641714-16153533.jpg" alt="">
-        <img id="img3" src=".//formonix/pexels-fauxels-3184611.jpg" alt="">
-        <img id="img4" src="./formonix/pexels-tima-miroshnichenko-6913350.jpg" alt="">
-        <img id="img5"  src="./formonix/pexels-vlada-karpovich-4050447.jpg" alt="">
-
-      </div>
-
     </section>
 
-    <section class="video-section">
+    <section class="video-section" id="video-section">
         <div class="video-section-content">
-            <h1>See how stande work</h1>
-           <p>We connect you with students who work during your 2-3 hour peak periods <br> each day, allowing you to improve the and team experience,</p>
+            <h1>See how stande works</h1>
+            <p>We connect you with students who work during your 2-3 hour peak periods each day, allowing you to improve the customer and team experience.</p>
         </div>
 
         <div class="video-section-video">
-            <video src="./formonix/large.mp4" controls></video>
+            <video controls poster="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=450&fit=crop">
+                <source src="https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
         </div>
     </section>
 
-   <section class="services-section-customers">
+    <section class="services-section-customers" id="customers-section">
+        <div class="services-section-customers-content">
+            <h1>Give your customers the experience they deserve</h1>
+            <p>Enhance the customer experience by having enough hands to deliver on your promise, no matter the time of day</p>
+        </div>
 
-           <div class="services-section-customers-content">
-            <h1>Give your customers <br> the experience they <br> deserve</h1>
-            <p>Enchance the customer experience by having  <br>
-                enough hands to deliver on your promise,
-                 no  <br> matter the time of day</p>
-        
-    </div>
+        <div class="services-section-customers-image">
+            <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=500&h=400&fit=crop" alt="Customer service">
+        </div>
+    </section>
 
-    <div class="services-section-customers-image">
-        <img src="./formonix/pexels-photo-4393517.webp" alt="">
-    </div>
-   </section>
+    <section class="support-section" id="support-section">
+        <div class="support-section-content">
+            <h1>Do more to help your team thrive</h1>
+            <p>Provide support for your team at those daily peaks when they need it most, and breed a happier work place with stable and committed employees.</p>
+        </div>
 
-   <section class="support-section">
-    <div class="support-section-content">
-        <h1>Do more to help <br> your team thrive</h1>
-        <p>Provide support for your team at those daily <br> peaks when they need it most, and  breed a <br> happier work place with stable and <br> committed employees.</p>
-    </div>
-
-    <div class="support-section-image">
-        <img id="support-img1" src="./formonix/artist-white_1368-3546.avif" alt="">
-        <img id="support-img2" src="./formonix/face-young-handsome-man-looking-camera_251136-10414.avif" alt="">
-        <img id="support-img3" src="./formonix/handsome-smiling-man-looking-with-disbelief_176420-19591.jpg" alt="">
-        <img id="support-img4" src="./formonix/OIP (6).jpeg" alt="">
-        
-
-        <i id="trophy" class="fa-solid fa-trophy">
-
+        <div class="support-section-image">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop" alt="Team member 1">
+            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop" alt="Team member 2">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop" alt="Team member 3">
+            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=200&h=200&fit=crop" alt="Team member 4">
             
-        </i>
-    </div>
-   </section>
-   <section class="costs-section">
-
-    <div class="costs-content-section">
-
-        <h1>Keep overall costs <br> under control</h1>
-        <p>Deploy your team with more prevision so you  <br> can drive revenue during your busy periods, and <br> stay affordable during quiet periods</p>
-
-
-
-
-
-    </div>
-
-    <div class="costs-section-image">
-
-        <img src="./formonix/pexels-photo-4065155.webp" alt="">
-
-        <div class="amt"> 
-            <!-- <div>
-                <i class="fa-solid fa-square-check"></i>
-            </div> -->
-            <h1 id="amount">$340</h1>
-            <p>Weekly wage reduction</p>
+            <i id="trophy" class="fa-solid fa-trophy"></i>
         </div>
-    </div>
+    </section>
 
-
-</section>
-
-<section class="Experience">
-    <div class="Experience-image">
-        <img src="./formonix/pexels-photo-2379004.jpeg" alt="">
-
-
-    </div>
-
-
-    <div class="Experience-content">
-    <h1>Grays Court Hotel York <br> maximises their customer <br> and team experiences</h1>
-
-    <p>Using Formonix students has meant key staff are able <br> to dedicate themselves to customer relations and <br> guest iteractions leading to a much improved customer experience. Find out more.</p>
-   
-
-    <button>Read All Story</button>
-</div>
-
-
-
-</section>
-
-<footer class="footer-section">
-
-    <div class="icons-section">
-
-        <h1>Formonix.</h1>
-        <div class="icons-section-icons">
-        <a href="#"><i class="fa-brands fa-facebook"></i></a>
-        <a href="#"><i class="fa-brands fa-twitter"></i></a>
-        <a href="#"><i class="fa-brands fa-youtube"></i></a>
-        <a href="#"><i class="fa-brands fa-instagram"></i></a>
-    </div>
-    <p id ="copyright">© 2022 Formix Limited. All rights reserved.</p>
-    </div>
-
-    <div class="contact-section">
-        <div class="platform">
-            <h1>Platform</h1>
-            <ul>
-                <li>Shop All</li>
-                <li>Bags</li>
-                <li>Interior Organizers</li>
-            </ul>
+    <section class="costs-section" id="costs-section">
+        <div class="costs-content-section">
+            <h1>Keep overall costs under control</h1>
+            <p>Deploy your team with more precision so you can drive revenue during your busy periods, and stay affordable during quiet periods</p>
         </div>
 
-        <div class="For-Students">
-            <h1>For Students</h1>
-            <ul>
-                <li>Overview</li>
-                <li>Privacy Policy</li>
-                <li>Terms of Service</li>
-            </ul>
+        <div class="costs-section-image">
+            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=500&h=400&fit=crop" alt="Cost management">
+            <div class="amt"> 
+                <h1 id="amount">$340</h1>
+                <p>Weekly wage reduction</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="Experience" id="experience-section">
+        <div class="Experience-image">
+            <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?w=500&h=400&fit=crop" alt="Hotel experience">
         </div>
 
-        <div class="Learn">
-            <h1>Learn</h1>
-            <ul>
-                <li>Resources</li>
-                <li>From the Blog</li>
-                <li>Latest News</li>
-            </ul>
+        <div class="Experience-content">
+            <h1>Grays Court Hotel York maximises their customer and team experiences</h1>
+            <p>Using Formonix students has meant key staff are able to dedicate themselves to customer relations and guest interactions leading to a much improved customer experience. Find out more.</p>
+            <button>Read All Story</button>
+        </div>
+    </section>
+
+    <footer class="footer-section">
+        <div class="icons-section">
+            <h1>Formonix.</h1>
+            <div class="icons-section-icons">
+                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+            <p id="copyright">© 2022 Formix Limited. All rights reserved.</p>
         </div>
 
+        <div class="contact-section">
+            <div class="platform">
+                <h1>Platform</h1>
+                <ul>
+                    <li>Shop All</li>
+                    <li>Bags</li>
+                    <li>Interior Organizers</li>
+                </ul>
+            </div>
 
-        <div class="Support">
+            <div class="For-Students">
+                <h1>For Students</h1>
+                <ul>
+                    <li>Overview</li>
+                    <li>Privacy Policy</li>
+                    <li>Terms of Service</li>
+                </ul>
+            </div>
 
-            <h1>Support</h1>
+            <div class="Learn">
+                <h1>Learn</h1>
+                <ul>
+                    <li>Resources</li>
+                    <li>From the Blog</li>
+                    <li>Latest News</li>
+                </ul>
+            </div>
 
-           <ul>
-            <li>FAQ & Returns</li>
-            <li>Corporate Gifting</li>
-            <li>Bravaa@gmail.com</li>
-           </ul>
+            <div class="Support">
+                <h1>Support</h1>
+                <ul>
+                    <li>FAQ & Returns</li>
+                    <li>Corporate Gifting</li>
+                    <li>Bravaa@gmail.com</li>
+                </ul>
+            </div>
         </div>
-
-       
 
         <div class="bottom">
             <p>Terms & Conditions</p>
-            <p> Privacy Policy</p>
+            <p>Privacy Policy</p>
         </div>
-        
+    </footer>
 
-    </div>
+    <script>
+        // Mobile menu toggle functionality
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.querySelector('.nav-menu');
 
-   
-</footer>
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('show');
+        });
 
-    
+        // Smooth scrolling for anchor links (now applied to the new anchor tags)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                // Hide menu after clicking a link on mobile (improves UX)
+                if (navMenu.classList.contains('show')) {
+                    navMenu.classList.remove('show');
+                }
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
